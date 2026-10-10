@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="./styles/styles.css" rel="stylesheet">
+        <title>Catálogo de juego</title>
+    </head>
+    <body>
+        <h1>Catálogo de videojuegos</h1>
+
+        <!-- Tabla con videojuegos -->
+        <table>
+
+            <!-- Cabeza de la tabla -->
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Género</th>
+                    <th>Plataforma</th>
+                    <th>Precio</th>
+                    <th>Disponibilidad</th>
+                </tr>
+            </thead>
+
+            <!-- Cuerpo de la tabla -->
+            <tbody>
+                <tr th:each="juego: ${juegos}">
+                    <td th:text="${juego.titulo}">Juego genérico</td>
+                    <td th:text="${juego.genero}">Género genérico</td>
+                    <td th:text="${juego.plataforma}">Consola</td>
+                    <td th:text="${juego.precio}">0.00</td>
+
+                    <!-- Cambia este renderizado según el estado del videojuego -->
+                    <td>
+                        <span th:if="${juego.disponible}" class="disponible">En stock</span>
+                        <span th:unless="${juego.disponible}" class="agotado">Agotado</span>
+                    </td>
+                </tr>
+
+                <!-- Esto lo muestra si no hay videojuegos -->
+                <tr th:if="${#lists.isEmpty(juegos)}">
+                    <td colspan="5">No hay juegos</td>
+                </tr>
+            </tbody>
+        </table>
+    <div>
+        <a th:href="@{/}">Volver al inicio</a>
+    </div>
+    </body>
+</html>

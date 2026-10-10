@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="./styles/styles.css" rel="stylesheet">
+        <title>Title</title>
+    </head>
+    <body>
+        <!-- Parte inicial -->
+        <h1 th:text="${mensajeBienvenida}">Título de relleno</h1>
+        <p>Hola, <span th:text="${nombreUsuario}">Usuario</span>. ¡Bienvenido a la clase!</p>
+        <hr>
+        <!-- Enlaces -->
+        <h3>Menú de navegación</h3>
+        <ul>
+            <li><a th:href="@{/saludo}">Ver saludo y objetos implícitos</a></li>
+            <li><a th:href="@{/catalogo}">Ver catálogo de juegos</a></li>
+        </ul>
+    </body>
+</html>
